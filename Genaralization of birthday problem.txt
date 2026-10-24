@@ -1,0 +1,13 @@
+#Genaralization of birthday problem: the minimum number of people in a room so that the probability that there are at least two of them have the same birthday is greater than or equal to r
+
+from decimal import Decimal, getcontext
+getcontext().prec = 1000
+r = Decimal(input("Enter the required probability (beteen 0 and 1): "))
+m = Decimal(1)
+
+for i in range(2, 367 + 1):
+    m *=  Decimal(367 - i)/Decimal(366)
+    p = Decimal(1) - m
+    if p >= r:
+        print(i)
+        break
